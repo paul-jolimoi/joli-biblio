@@ -3,7 +3,7 @@
 #[macro_use] extern crate rocket;
 #[macro_use] extern crate rocket_contrib;
 
-use rocket_contrib::databases::rusqlite::{self, types::ToSql, Connection};
+use rocket_contrib::databases::rusqlite::{Connection};
 
 #[derive(Debug)]
 struct Author {
@@ -23,7 +23,7 @@ fn status_api() -> &'static str {
 fn get_author_service(connection: &Connection, id: i32)-> Author {
     return connection.query_row(
         "SELECT id_author, firstname, lastname FROM jb_author where id_author = ?", 
-        &[&id as &dyn ToSql],
+        &[&id],
         |row| {
             Author {
                 id_author: row.get(0),
