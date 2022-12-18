@@ -1,0 +1,14 @@
+## set only when compiled in debug mode, i.e, `cargo build`
+[development]
+address = "127.0.0.1"
+port = 8080
+## only the `json` key from `default` will be overridden; `form` will remain
+
+## set only when compiled in release mode, i.e, `cargo build --release`
+## don't use this secret_key! generate your own and keep it private!
+[production]
+port = 1337
+## secret_key = "hPRYyVRiMyxpw5sBB1XeCMN1kFsDCqKvBi2QJxBVHQk="
+
+[global.databases]
+sqlite_db = { url = "database.db" }
